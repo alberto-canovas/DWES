@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/estilo1.css">
+    <title>Recogida de datos desde otra página</title>
+</head>
+<body>
+    <form action="recogidaDatos1.php" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre"><br>
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos"><br>
+
+        <label for="telefono">Telefono</label>
+        <input type="text" id="telefono" name="telefono"><br>
+
+        <label for="num dias">Numero de dias</label>
+        <input type="text" id="num dias" name="num dias">
+
+        <label for="num.horas">Numero de dias</label>
+        <input type="text" id="num.horas" name="num.horas">
+
+        
+        <h1>Pasar variables a fichero php desde enlace</h1>
+        <p>Selecciona un producto para ver sus detalles</p>
+        <ul>
+            <li><a href="productos.php?id=1&nombre=Camisa&precio=25">Camisa (25€)</a></li>
+            <li><a href="productos.php?id=2&nombre=Pantalon&precio=45">Pantalón (45€)</a></li>
+            <li><a href="productos.php?id=3&nombre=Zapatos&precio=25">Zapatos (25€)</a></li>
+        </ul>
+        
+        <input type="submit" value="ENVIAR">
+
+        <label for="clave_original">Clave original:</label>
+        <input type="password" id="clave_original" name="clave[original]">
+
+        <label for="clave_repetida">Clave repetida:</label>
+        <input type="password" id="clave_repetida" name="clave[repetida]">
+
+        <!-- Selector múltiple -->
+
+        <label for="provincias">Selecciona tus provincias favoritas</label>
+        <p>
+            <select multiple name="provincias[]" id="provincias">
+                <option value="MU">Murcia</option>
+                <option value="VA">Valencia</option>
+                <option value="BCN">Barcelona</option>
+                <option value="MAD">Madrid</option>
+                <option value="AL">Almería</option>
+
+            </select>
+
+        </p>
+    </form>
+</body>
+</html>
