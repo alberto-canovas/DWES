@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <H1>CONTROL DE ERRORES</H1>
     <header>EJERCICIO 4</header>
     <main>
 
@@ -30,7 +30,7 @@
             $nombre_y_apellidos = $_POST["nombre"] . " " . $_POST["apellidos"];
 
             if(!isset($salario)|| $salario === ""){
-                $errores["salario"] = "Introduce un salario";
+                $errores["salario"] = "El campo salario está vacío";
             }elseif($salario<0){
                 $errores["salario"] = "Introduce un salario mayor que 0";
             }elseif(!is_numeric($salario)){
@@ -39,7 +39,7 @@
 
             
             if(!isset($edad)||$edad === ""){
-                $errorse["edad"]="Introduce una edad";
+                $errorse["edad"]="El campo edad está vacío";
             }elseif(!is_numeric($edad)){
                 $errores["edad"]="Introduce una edad numérica";
             }elseif($edad<=15){
@@ -54,7 +54,7 @@
             
             
             if(!isset($apellidos)||$apellidos ===""){
-                $errores["apellidos"]="El campo nombre está vacío";
+                $errores["apellidos"]="El campo apellidos está vacío";
             };
             
           
@@ -74,11 +74,21 @@
                 }
             }
 
-            echo "<br> $nombre_y_apellidos, tu salario será de $salario";
+            if (isset($errores)) {
+                //echo "<br><a href=".$_SERVER["PHP_SELF"].">VOLVER</a>";
+                echo"hay errores";
+                include "Plantilla.php";
+                mostarErrores($errores);
+            } else {
+                echo "Todos los datos son correctos.";
+                echo "<br> $nombre_y_apellidos, tu salario será de $salario";
+            }
         }
 
 
-
+        function mostarErrores($errores){
+            
+        }
 
 
 
