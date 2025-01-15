@@ -16,13 +16,13 @@
 
         
         <?php
+            include "FuncionesEj4.php";
         if (!$_POST) {
-            include "Funciones.php";
+            $errores[] = "";
             include "Plantilla.php";
         } else {
             // echo "DATOS ANTIGUOS";
             // print_r($_POST);
-            $errores[] = "";
             $salario = $_POST["salario"];
             $edad = $_POST["edad"];
             $nombre = $_POST["nombre"];
@@ -39,7 +39,7 @@
 
             
             if(!isset($edad)||$edad === ""){
-                $errorse["edad"]="El campo edad está vacío";
+                $errores["edad"]="El campo edad está vacío";
             }elseif(!is_numeric($edad)){
                 $errores["edad"]="Introduce una edad numérica";
             }elseif($edad<=15){
@@ -78,7 +78,7 @@
                 //echo "<br><a href=".$_SERVER["PHP_SELF"].">VOLVER</a>";
                 echo"hay errores";
                 include "Plantilla.php";
-                mostarErrores($errores);
+                mostrarErrores($errores);
             } else {
                 echo "Todos los datos son correctos.";
                 echo "<br> $nombre_y_apellidos, tu salario será de $salario";
@@ -86,9 +86,7 @@
         }
 
 
-        function mostarErrores($errores){
-            
-        }
+        
 
 
 
