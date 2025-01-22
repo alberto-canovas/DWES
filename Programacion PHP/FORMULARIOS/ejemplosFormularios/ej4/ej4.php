@@ -17,8 +17,8 @@
         
         <?php
             include "FuncionesEj4.php";
-        if (!$_POST) {
             $errores[] = "";
+            if (!$_POST) {
             include "Plantilla.php";
         } else {
             // echo "DATOS ANTIGUOS";
@@ -50,12 +50,16 @@
             
             if(!isset($nombre)||$nombre ===""){
                 $errores["nombre"]="El campo nombre está vacío";
-            };
+            }elseif(is_numeric($nombre)){
+                $errores["nombre"] = "Introduce un nombre sin números";
+            }
             
             
             if(!isset($apellidos)||$apellidos ===""){
                 $errores["apellidos"]="El campo apellidos está vacío";
-            };
+            }elseif(is_numeric($apellidos)){
+                $errores["apellidos"] = "Introduce unos apellidos sin números";
+            }
             
           
             if ($salario < 1000) {
