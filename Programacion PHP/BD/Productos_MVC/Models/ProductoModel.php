@@ -1,6 +1,6 @@
 <?php
 
-require_once 'ConexionModel.php';
+require_once __DIR__.'/ConexionModel.php';
 
 class ProductoModel{
     private $conexionBD;
@@ -19,16 +19,27 @@ class ProductoModel{
     }
 
     public function actualizar($codigo,$nombre,$precio,$cantidad){
-
+        $consulta ="UPDATE productos SET codigo = ?, nombre=?, precio=?, cantidad=? ";
+        $stmt = $this->conexionBD->prepare($consulta);
+        $stmt->bind_param("isdi",$codigo,$nombre,$precio,$cantidad);
+        return $stmt->execute();
     }
 
     public function eliminar($codigo){
+        $consulta ="DELETE FROM productos WHERE codigo = ?";
+        $stmt = $this->conexionBD->prepare($consulta);
+        $stmt->bind_param("i",$codigo);
+        return $stmt->execute();
 
     }
 
     public function getProducto($codigo){
-        $consulta = "SELECT INTO productos WHERE productos.codigo == $codigo";
-        
+        $consulta = "SELECT * FROM productos WHERE codigo = ?";
+        $stmt = $this->conexionBD->prepare($consulta);
+        $stmt->bind_param("i",$codigo);
+        $stmt->execute();
+        //SOLO CUANDO hacemos un SELECT devolvemos un array con fetch_assoc
+        return $stmt->get_result()->fetch_assoc();
 
     }
 }

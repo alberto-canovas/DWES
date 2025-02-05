@@ -1,5 +1,5 @@
 <?php
 
-require_once 'Views/ProductoView.php';
+require_once __DIR__.'/Views/ProductoView.php';
 
 ?>
