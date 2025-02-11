@@ -1,7 +1,7 @@
 <?php
 
 //echo phpinfo();
-//------CONEXION CON BD METODO PROCEDIMENTAL (Funciones) -------
+//------ CONEXION CON BD METODO PROCEDIMENTAL (Funciones) -------
 
 $server = "localhost";
 $userName = "root";
