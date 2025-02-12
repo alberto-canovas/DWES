@@ -60,19 +60,12 @@ class StockController{
     // }
     }
 
-
-    public function consultarUnidades($codigo_producto){
-
-        try{
-            $this->stockModel->consultarUnidades($codigo_producto);
-
-
-            
-            return "Consulta realizada";
-        }catch(Exception $e){
-            return "Error en la transaccion ".$e->getMessage();
-        }
-
+    
+    public function obtenerStockPorCodigoProducto($codigo_producto){
+        return $this->stockModel->obtenerStockPorCodigo($codigo_producto);
     }
+
+
+    
 }
 ?>

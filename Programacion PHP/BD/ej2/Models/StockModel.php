@@ -3,10 +3,6 @@
 require_once __DIR__."/ConexionModel.php";
 require_once __DIR__."/../Controllers/StockController.php";
 
-
-
-
-
 class StockModel{
     private $conexion;
 
@@ -49,15 +45,18 @@ class StockModel{
 
     }
 
-
-    public function consultarUnidades($codigo_producto){
-        $consulta = "SELECT * FROM stock WHERE producto = ? ";
+    public function obtenerStockPorCodigo($codigo_producto){
+        $consulta = "SELECT s.unidades, p.nombre_corto, t.nombre AS 'nombre_tienda' FROM stock AS s 
+        INNER JOIN producto AS p ON s.producto = p.cod
+        INNER JOIN tienda AS t ON s.tienda = t.cod
+        WHERE p.cod = ? ";
         $stmt = $this->conexion->prepare($consulta);
         $stmt->bind_param("s",$codigo_producto);
         $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
-
+        $resultado = $stmt->get_result();
+        return $resultado->fetch_all(MYSQLI_ASSOC);
     }
+
 
 
 }
