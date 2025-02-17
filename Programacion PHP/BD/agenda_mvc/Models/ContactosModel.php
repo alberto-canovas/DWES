@@ -1,42 +1,36 @@
 <?php
 
-    require_once __DIR__."/ConexionPDOModel.php";
+    require_once __DIR__."/ConexionModel.php";
 
-    class ContactosModel{
+    class ContactosModel {
         private $conexionBD;
 
         public function __construct(){
-            //creamos una conexión
-            $this->conexionBD = (new ConexionPDOModel())->getConnection();
+
+            $this->conexionBD = (new ConexionModel())->connect();
         }
 
-        public function addContactosPDO($nombre,$email,$telefono,$direccion){
-            $consulta = "INSERT INTO contactos (nombre,email,tlf,direccion) VALUES(:nombre,:email,:tlf,:direccion)";
-            $stmt= $this->conexionBD->query($consulta);
-            $stmt->bindParam("nombre", $nombre);
-            $stmt->bindParam("email", $email);
-            $stmt->bindParam("telefono", $telefono);
-            $stmt->bindParam("direccion", $direccion);
-            $stmt->execute();
+        public function addContactos($nombre,$email,$tlf,$direccion){
+            $consulta = "INSERT INTO contactos (nombre,email,tlf,direccion) VALUES(?,?,?,?)";
+            $stmt = $this->conexionBD->prepare($consulta);
+            $stmt->bind_param("ssis",$nombre,$email,$tlf,$direccion);
+            return $stmt->execute();
         }
 
         public function listarContactos(){
-            $consulta = "SELECT * FROM agenda";
-            $stmt= $this->conexionBD->prepare($consulta);
+            $consulta = "SELECT * FROM contactos";
+            $stmt = $this->conexionBD->prepare($consulta);
             $stmt->execute();
-            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            foreach($resultado as $fila){
-                echo "<pre>";
-                print_r($fila);
-                echo "<br>";
-            }
-            
-
-            
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        
         }
 
 
+
+
+
     }
+
+
 
 ?>

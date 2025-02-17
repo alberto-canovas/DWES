@@ -2,6 +2,13 @@
 
 require_once __DIR__."/../Models/ConexionPDOModel.php";
 require_once __DIR__."/../Controllers/ContactosController.php";
+require_once __DIR__."/../Controllers/ContactosControllerPDO.php";
+
+$contactos = new ContactosController;
+
+
+print_r($contactos->obtenerContactos());
+
 
 ?>
 
@@ -18,12 +25,11 @@ require_once __DIR__."/../Controllers/ContactosController.php";
 
 
     <form method="post">
-
-
-
+        
+        
+        
     </form>
-
-    <button>LISTAR CONTACTOS</button>
+    <a href="C:\xampp\htdocs\DWES\BD\agenda_mvc\Views\AddContactoView.php">AÑADIR CONTACTO</a>
     <button>ELIMINAR CONTACTO</button>
     <button>EDITAR CONTACTO</button>
     
