@@ -2,16 +2,17 @@
 
 class ConexionPDOModel {
 
-    private $server = 'localhost';
-    private $userName = 'root';
-    private $password = '';
-    private $database = 'agenda';
     private $conexion;
-
+    
     //conexion
     public function __construct() {
+        $server = 'localhost';
+        $userName = 'root';
+        $password = '';
+        $database = 'agenda';
+
         try{
-            $this->conexion = new PDO("mysql:host=".$this->server."; db=".$this->database."; charset=UTF8",$this->userName,$this->password);
+            $this->conexion = new PDO("mysql:host=".$server."; dbname=".$database."; charset=UTF8",$userName,$password);
             echo "Conexión PDO realizada con éxito";
 
         }catch(Exception $e){

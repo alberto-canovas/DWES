@@ -14,7 +14,8 @@
             $consulta = "INSERT INTO contactos (nombre,email,tlf,direccion) VALUES(?,?,?,?)";
             $stmt = $this->conexionBD->prepare($consulta);
             $stmt->bind_param("ssis",$nombre,$email,$tlf,$direccion);
-            return $stmt->execute();
+            $stmt->execute();
+            return "contacto añadido";
         }
 
         public function listarContactos(){
