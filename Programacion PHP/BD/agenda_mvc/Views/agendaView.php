@@ -4,10 +4,12 @@ require_once __DIR__."/../Models/ConexionPDOModel.php";
 require_once __DIR__."/../Controllers/ContactosController.php";
 require_once __DIR__."/../Controllers/ContactosControllerPDO.php";
 
-$contactos = new ContactosControllerPDO;
+$contactos = new ContactosController;
 
 
-print_r($contactos->obtenerContactos());
+//print_r($contactos->obtenerContactos());
+$contactos = $contactos->obtenerContactos();
+//print_r($contactos->addContacto("pepe","pepe@gmail.com","132456789","calle pepe"));
 
 
 ?>
@@ -33,13 +35,19 @@ print_r($contactos->obtenerContactos());
             </tr>
         </thead>
         <tbody>
+            <?php
+                foreach($contactos as $contacto){
+                    
+                    print_r($contacto);
+                }
+            ?>
             <tr></tr>
         </tbody>
     </table>
 
 
     
-    <a href="\xampp\htdocs\DWES\BD\agenda_mvc\Views\AddContactoView.php">AÑADIR CONTACTO</a>
+    <a href="/DWES%20ALBERTO/Programacion%20PHP/BD/agenda_mvc/Views/AddContactoView.php">AÑADIR CONTACTO</a>
     <a href="">EDITAR CONTACTO</a>
     <a href="">ELIMINAR CONTACTO</a>
     

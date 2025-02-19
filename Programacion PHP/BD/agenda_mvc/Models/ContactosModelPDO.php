@@ -10,7 +10,6 @@
             $this->conexionBD = (new ConexionPDOModel())->getConnection();
             
             
-           
         }
 
 
@@ -28,16 +27,9 @@
         public function listarContactosPDO(){
             $consulta = "SELECT * FROM contactos";
             $stmt= $this->conexionBD->query($consulta);
-            // $stmt->execute();
+            $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-           
-            
-            foreach($resultado as $fila){
-                echo "<pre>";
-                print_r($fila);
-                echo "<br>";
-            }
-            
+            return $resultado;
 
         }
 

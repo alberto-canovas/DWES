@@ -22,10 +22,10 @@
             $consulta = "SELECT * FROM contactos";
             $stmt = $this->conexionBD->prepare($consulta);
             $stmt->execute();
-            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        
+            return $stmt->get_result();//->fetch_all(MYSQLI_ASSOC);        
         }
 
+        
 
 
 
