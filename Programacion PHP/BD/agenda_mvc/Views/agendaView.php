@@ -27,18 +27,26 @@ $contactos = $contactos->obtenerContactos();
     <table>
         <thead>
             <tr>
-                <td>Id</td>
-                <td>Nombre</td>
-                <td>Email</td>
-                <td>Teléfono</td>
-                <td>Direccion</td>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Direccion</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                
+            </tr>
             <?php
                 foreach($contactos as $contacto){
-                    
-                    print_r($contacto);
+                    foreach($contacto as $row){
+                        print_r($row);
+                        echo "<br>";
+                    }
+                    // echo "<pre>";
+                    // print_r($contacto);
+                    // echo "<br>";
                 }
             ?>
             <tr></tr>
@@ -47,7 +55,7 @@ $contactos = $contactos->obtenerContactos();
 
 
     
-    <a href="/DWES%20ALBERTO/Programacion%20PHP/BD/agenda_mvc/Views/AddContactoView.php">AÑADIR CONTACTO</a>
+    <a href="/../Views/AddContactoView.php">AÑADIR CONTACTO</a>
     <a href="">EDITAR CONTACTO</a>
     <a href="">ELIMINAR CONTACTO</a>
     

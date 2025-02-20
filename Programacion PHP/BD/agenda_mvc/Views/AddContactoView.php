@@ -3,7 +3,7 @@
 require_once __DIR__."/../Models/ConexionPDOModel.php";
 require_once __DIR__."/../Controllers/ContactosController.php";
 
-//$addContacto = new ContactosController()->addContacto();
+
 
 
 
@@ -23,7 +23,6 @@ require_once __DIR__."/../Controllers/ContactosController.php";
 
 
     <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post">
-
         <label for="nombre">nombre</label>
         <input type="text" name="nombre" id="nombre">
         
@@ -31,7 +30,7 @@ require_once __DIR__."/../Controllers/ContactosController.php";
         <input type="email" name="email" id="email">
         
         <label for="tlf">Teléfono</label>
-        <input type="tel" name="tlf" id="tlf">
+        <input type="text" name="tlf" id="tlf">
         
         <label for="direccion">Direccion</label>
         <input type="text" name="direccion" id="direccion">
@@ -71,7 +70,8 @@ require_once __DIR__."/../Controllers/ContactosController.php";
                 $errores['tlf'] = 'El campo teléfono está vacío';
             }elseif(!is_numeric( $_POST['tlf'])){
                 $errores['tlf'] = 'El campo teléfono no puede contener caracteres';
-            }elseif(len($_POST['tlf'])=!9){
+            // }elseif(strlen( $_POST['tlf']) =!9){
+            //   $errores['tlf'] = 'El campo teléfono tiene que tener exactamente 9 dígitos';
 
             }else{
                 $tlf = $_POST['tlf'];
@@ -90,7 +90,12 @@ require_once __DIR__."/../Controllers/ContactosController.php";
                     print_r($error);
                 }
             }else{
-                echo "Formulario enviado con éxito";
+                $addContacto = new ContactosController();
+                $addContacto ->addContacto($nombre, $email, $tlf, $direccion);
+                
+                header("Location: agendaView.php");
+                exit();
+
             }
 
         }

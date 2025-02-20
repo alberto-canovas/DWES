@@ -26,7 +26,30 @@
         }
 
         
+        public function updateContacto($id,$nombre,$email,$tlf,$direccion){
+            $consulta = "UPDATE contactos SET nombre = ?, email = ?, direccion = ?, tlf = ?
+            where id = ? ";
+            $stmt = $this->conexionBD->prepare($consulta);
+            $stmt->bind_param("sssii",$nombre,$email,$direccion,$tlf,$id);
+            return $stmt->execute();
+        }
 
+        public function deleteContacto($id){
+            $consulta = "DELETE from contactos where id = ?";
+            $stmt = $this->conexionBD->prepare($consulta);
+            $stmt->bind_param("i",$id);
+            return $stmt->execute();
+        }
+
+        public function idExist($id){
+            $consulta = "SELECT nombre FROM contactos WHERE id_contacto = ?";
+            $stmt = $this->conexionBD->prepare($consulta);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->store_result(); // Necesario para usar num_rows
+        
+            return $stmt->num_rows > 0; // Devuelve true si hay al menos un resultado, false si no
+        }
 
 
 
