@@ -27,37 +27,37 @@ $contactos = $contactos->obtenerContactos();
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Direccion</th>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Email</td>
+                <td>Teléfono</td>
+                <td>Direccion</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            
+             
+        <?php foreach($contactos as $contacto){ ?>
+            
+                <tr>
+                    <td><?= $contacto['id_contacto']?></td>
+                    <td><?= $contacto['nombre']?></td>
+                    <td><?= $contacto['email']?></td>
+                    <td><?= $contacto['tlf']?></td>
+                    <td><?= $contacto['direccion']?></td>
+                </tr>
                 
-            </tr>
-            <?php
-                foreach($contactos as $contacto){
-                    foreach($contacto as $row){
-                        print_r($row);
-                        echo "<br>";
-                    }
-                    // echo "<pre>";
-                    // print_r($contacto);
-                    // echo "<br>";
-                }
-            ?>
-            <tr></tr>
+
+                <?php } ?>
+            
         </tbody>
     </table>
 
 
     
-    <a href="/../Views/AddContactoView.php">AÑADIR CONTACTO</a>
+    <a href="./AddContactoView.php">AÑADIR CONTACTO</a>
     <a href="">EDITAR CONTACTO</a>
-    <a href="">ELIMINAR CONTACTO</a>
+    <a href="./DeleteContactoView.php">ELIMINAR CONTACTO</a>
     
 </body>
 </html>

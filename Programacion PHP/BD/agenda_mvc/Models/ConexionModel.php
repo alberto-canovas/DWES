@@ -12,9 +12,9 @@ class ConexionModel {
     public function __construct(){
         try{
             $this->conexion = new mysqli($this->server, $this->username, $this->password, $this->database);
-            echo'Conexión establecida'; 
+            echo' <br> Conexión establecida'; 
         }catch(Exception $e){
-            echo "Error al crear la conexión: ".$e->getMessage();
+            echo "<br> Error al crear la conexión: ".$e->getMessage();
         }
 
     }

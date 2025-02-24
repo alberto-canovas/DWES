@@ -8,8 +8,6 @@
         public function __construct(){
             //creamos una conexión PDO
             $this->conexionBD = (new ConexionPDOModel())->getConnection();
-            
-            
         }
 
 
@@ -20,8 +18,7 @@
             $stmt->bindParam("email", $email);
             $stmt->bindParam("telefono", $telefono);
             $stmt->bindParam("direccion", $direccion);
-            return $stmt->execute();
-            
+            return $stmt->execute();  
         }
 
         public function listarContactosPDO(){
@@ -30,11 +27,7 @@
             $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;
-
         }
-
-
-
 
     }
 

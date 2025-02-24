@@ -3,7 +3,7 @@
     require_once __DIR__ ."/../Models/ContactosModel.php";
     require_once __DIR__ ."/../Models/ContactosModel.php";
 
-     class ContactosController {
+     class ApiSoapContactosController {
         private $contactoModel;
 
         public function __construct(){
